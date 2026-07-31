@@ -21,16 +21,19 @@ export const intialHabits = [
 
 export default function App() {
   const [habits, setHabits] = useState(intialHabits);
-  const routes = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout />,
-      children: [
-        { index: true, element: <Home habits={habits} setHabits={setHabits} /> },
-        { path: "/progress", element: <Progress habits={habits} /> },
-        { path: "/about", element: <About /> },
-      ],
-    },
-  ]);
+  const routes = createBrowserRouter(
+    [
+      {
+        path: "/",
+        element: <MainLayout />,
+        children: [
+          { index: true, element: <Home habits={habits} setHabits={setHabits} /> },
+          { path: "/progress", element: <Progress habits={habits} /> },
+          { path: "/about", element: <About /> },
+        ],
+      },
+    ],
+    { basename: "/habitly" },
+  );
   return <RouterProvider router={routes} />;
 }
